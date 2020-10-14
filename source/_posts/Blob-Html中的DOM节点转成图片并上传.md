@@ -1,5 +1,5 @@
 ---
-title: 通过Blob实现前端下载文件
+title: Html中的DOM节点转成图片并上传
 author: GleanWu
 tags:
   - Blob
