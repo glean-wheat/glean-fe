@@ -108,3 +108,7 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+prism_plugin:
+  mode: 'preprocess' # realtime/preprocess
+  theme: 'default'
+  line_number: false # default false
