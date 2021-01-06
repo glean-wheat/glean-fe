@@ -240,7 +240,7 @@ author: GleanWu
 tags:
 
 - WebComponent
-- 组件化
+- 组件化·
 
 ---
 
