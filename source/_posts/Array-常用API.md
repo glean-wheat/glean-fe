@@ -18,7 +18,7 @@ tags:
 
 ### 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 var arr2 = arr.concat(9, 9, 6)
 console.log(arr) // [1, 0, 2, 4]
@@ -33,7 +33,7 @@ console.log(arr2) // [1, 0, 2, 4, 9, 9, 6]
 
 ### 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 var arr2 = arr.slice(1, 2)
 console.log(arr) // [1, 0, 2, 4]
@@ -48,7 +48,7 @@ console.log(arr2) // [0]
 
 ## 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 var arr2 = arr.join('-')
 console.log(arr) // [1, 0, 2, 4]
@@ -63,7 +63,7 @@ console.log(arr2) // 1-0-2-4
 
 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 var arr2 = arr.join('-')
 console.log(arr) // [1, 0, 2, 4]
@@ -87,7 +87,7 @@ console.log(arr2) // "1,0,2,4"
 
 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 arr.fill(9)
 console.log(arr) // [9, 9, 9, 9]
@@ -106,7 +106,7 @@ console.log(arr) // [1, 0, 9, 4]
 
 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 var returnValue = arr.pop()
 console.log(arr) //[1, 0, 2]
@@ -121,7 +121,7 @@ console.log(returnValue) //4
 
 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 arr.push(9)
 var arr2 = [1, 0, 2, 4]
@@ -138,7 +138,7 @@ console.log(arr2) //[1, 0, 2, 4, 9, 9, 6]
 
 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 var returnValue = arr.shift()
 console.log(arr) //[0, 2, 4]
@@ -160,7 +160,7 @@ console.log(returnValue) //[1]
 
 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 arr.unshift(9, 9, 6)
 console.log(arr) //[9, 9, 6, 1, 0, 2, 4]
@@ -181,7 +181,7 @@ console.log(arr) //[9, 9, 6, 1, 0, 2, 4]
 
 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 arr.splice(1, 2)
 var arr2 = [1, 0, 2, 4]
@@ -198,7 +198,7 @@ console.log(arr2) //[1, 9, 9, 6, 4]
 
 例子：
 
-```js
+```javascript
 var arr = [1, 0, 2, 4]
 arr.reverse()
 console.log(arr) //[4, 2, 0, 1]
@@ -219,7 +219,7 @@ console.log(arr) //[4, 2, 0, 1]
 
 - 参数为函数
 
-  ```js
+  ```javascript
   function sortNumber(a, b) {
     return a - b
   }
@@ -233,7 +233,7 @@ console.log(arr) //[4, 2, 0, 1]
 
 例子：
 
-```js
+```javascript
 var arr = [1, 3, 2, 6, 9, 5]
 arr.sort(function(a, b) {
   return a - b

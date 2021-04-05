@@ -106,14 +106,14 @@ window.customElements.define('my-element', MyElement)
 
 可以使用 [Element.attachShadow()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/attachShadow) 方法来将一个 `shadow root` 附加到任何一个元素上。它接受一个配置对象作为参数，该对象有一个 `mode` 属性，值可以是 `open` 或者 `closed`：
 
-```js
+```javascript
 let shadow = elementRef.attachShadow({ mode: 'open' })
 let shadow = elementRef.attachShadow({ mode: 'closed' })
 ```
 
 `open` 表示可以通过页面内的 `JavaScript` 方法来获取 `Shadow DOM`，例如使用 `Element.shadowRoot` 属性：
 
-```js
+```javascript
 let myShadowDom = myCustomElem.shadowRoot
 ```
 
@@ -121,13 +121,13 @@ let myShadowDom = myCustomElem.shadowRoot
 
 如果你想将一个 `Shadow DOM` 附加到 `custom element` 上，可以在 `custom element` 的构造函数中添加如下实现（目前，这是 `shadow DOM` 最实用的用法）：
 
-```js
+```javascript
 let shadow = this.attachShadow({ mode: 'open' })
 ```
 
 将 `Shadow DOM` 附加到一个元素之后，就可以使用 `DOM APIs` 对它进行操作，就和处理常规 `DOM` 一样。
 
-```js
+```javascript
 var para = document.createElement('p')
 shadow.appendChild(para)
 ```
@@ -142,7 +142,7 @@ shadow.appendChild(para)
 
 在[wheat-ui](https://github.com/glean-wheat/wheat-ui) 的 [button](https://github.com/glean-wheat/wheat-ui/blob/master/src/button/button.js#L372)组件 中 因为`button`组件会根据不同的属性渲染不同的标签
 
-```js
+```javascript
 // 同时创建了两个标签
 const template = document.createElement('template')
 const templateTagA = document.createElement('template')
@@ -202,7 +202,7 @@ wheat-button {
 
 但是，组件的样式应该与代码封装在一起，只对自定义元素生效，不影响外部的全局样式。所以，可以把样式写在`<template>`里面。在[wheat-ui](https://github.com/glean-wheat/wheat-ui) 的 [button](https://github.com/glean-wheat/wheat-ui/blob/master/src/button/button.js#L372)组件;
 
-```js
+```javascript
 // 设置样式
 const style = `
 .wheat-button {
@@ -254,7 +254,7 @@ tags:
 
 让我们看一下自定义元素的生命周期，下面是一份代码备注，方便开始快速开发。
 
-```js
+```javascript
 class MyElementLifecycle extends HTMLElement {
   // 元素初始化的时候执行
   constructor() {
@@ -351,7 +351,7 @@ disconnectedCallback 的对应函数是 connectedCallback，
 
 使用这个函数需要和 `observedAttributes` 该方法配合使用，需要将你要监听的属性在该方法中注册；
 
-```js
+```javascript
 static get observedAttributes() {
     return ['my-attr']
 }
@@ -360,7 +360,7 @@ static get observedAttributes() {
 
 上面的函数中，就是对`my-attr`属性进行了监听；当该属性的值发生改变的时候，就会触发`attributeChangedCallback`
 
-```js
+```javascript
 /**
    *
    * @param {*} name 属性名称
@@ -389,7 +389,7 @@ attributeChangedCallback(name, oldVal, newVal) {
 
 例如，如果你有一个`ID`为`container`的组件，并且你需要在根据属性的改变来决定是否给这个元素添加一个灰色的背景，那么你可以在构造函数中引用这个元素，以便它可以在`attributeChangedCallback`中使用：
 
-```js
+```javascript
 constructor() {
   this.container = this.shadowRoot.querySelector('#container');
 }
@@ -416,13 +416,13 @@ attributeChangedCallback(attr, oldVal, newVal) {
 然后通过 `customements.define()` 注册时，它会继承`HTMLElement`这个类。这个过程称为升级。
 通过 `customElements.whenDefined`方法，当自定义元素被定义时一个 `Promise` 返回`{jsxref("undefined")}}`. 如果自定义元素已经被定义，则 `resolve` 立即执行
 
-```js
+```javascript
 
 Promise<> customElements.whenDefined(name);
 
 ```
 
-```js
+```javascript
 customElements.whenDefined('my-element').then(() => {
   // my-element is now defined
 })

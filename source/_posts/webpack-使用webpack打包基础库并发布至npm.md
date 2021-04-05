@@ -17,7 +17,7 @@ webpack 除了打包应用，也可以用来打包自己写的一些 js 库
 
 - 支持通过 script 脚本直接引入链接
 
-```js
+```javascript
 
 // ESM
 import HiRequest Tool from 'hi-request';
@@ -41,7 +41,7 @@ require(['hi-request'],function(){
 
 - [libraryTarget](https://webpack.docschina.org/configuration/output/)：支持库引入的方式
 
-```js
+```javascript
  output: {
     filename: '[name].js',
     library: 'HiRequest',
@@ -64,7 +64,7 @@ npm i webpack webpack-cli
 
 ### 2.新建目录 src/index.js,编写我们的工具代码
 
-```js
+```javascript
 export function request(el) {
   // 自己随便写点代码
   console.log('发出请求')
@@ -81,7 +81,7 @@ npm i terser-webpack-plugin -D
 
 ### 4. 新建 webpack.config.js
 
-```js
+```javascript
 const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
@@ -114,7 +114,7 @@ module.exports = {
 
 ### 5. 修改 package.json 添加打包命令
 
-```js
+```javascript
 {
   "name": "hi-request",
   "version": "1.0.0-rc.1",
@@ -151,7 +151,7 @@ module.exports = {
 
 ### 6.设置入口文件 不同环境下使用不同的入口文件
 
-```js
+```javascript
 // index.js
 if (process.env.NODE_ENV === 'production') {
   // 通过环境变量来决定入口文件

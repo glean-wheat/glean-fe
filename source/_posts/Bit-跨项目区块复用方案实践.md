@@ -143,7 +143,7 @@ Bit 官方已经提供了在服务器上部署远程仓库的方案，可以在�
 
 Git 的本质是一个文件系统，其工作空间中的所有文件的历史版本以及提交记录(Commit)、branch、tag 等信息都是以文件对象的方式保存在 .git 目录中的。在 .git 下的 objects 目录下可能会看下面这类文件：
 
-```js
+```javascript
 .git/objects
 ├── 06
 │   └── 5bcad11008c5e958ff743f2445551e05561f59
@@ -161,10 +161,10 @@ Git Objects 目录中的文件类型主要有以下三种：
 
 而 Git Objects 是通过下面的方式处理并存储在 Git 内部的文件系统中的：
 
-1. 首先创建一个 header，header 的值为 “对象类型 内容长度\0”；
+1. 首先创建一个 header，header 的值为 "对象类型 内容长度\0"；
 2. 将 header 和文件内容连接起来，计算得到其 SHA-1 hash 值（40 个十六进制的数字组成的字符串）；
 3. 将连接得到的内容采用 zlib 压缩；
-4. 将压缩后的内容写入到以 “hash 值前两位命令的目录/hash 值后 38 位命令的文件” 中。
+4. 将压缩后的内容写入到以 "hash 值前两位命令的目录/hash 值后 38 位命令的文件" 中。
 
 在 Bit 源码中， Bit Scope 中的 objects 文件也分成以下几种类型：
 
@@ -177,16 +177,16 @@ Git Objects 目录中的文件类型主要有以下三种：
 而 Bit Objects 在处理和存储上面这些信息的方式也和 Git 大同小异：
 
 1. 首先根据文件内容计算得到其 SHA-1 hash 值（40 个十六进制的数字组成的字符串）；
-2. 然后创建一个 header，header 的值为 “对象类型 文件内容的 SHA-1 hash 值 内容长度\0”；
+2. 然后创建一个 header，header 的值为 "对象类型 文件内容的 SHA-1 hash 值 内容长度\0"；
 3. 将 header 和文件内容连接起来；
 4. 将连接得到的内容采用 zlib 压缩；
-5. 将压缩后的内容写入到以 “hash 值前两位命令的目录/hash 值后 38 位命令的文件” 中。
+5. 将压缩后的内容写入到以 "hash 值前两位命令的目录/hash 值后 38 位命令的文件" 中。
 
 区别在于两点：一个是 Git 是根据 `header + 文件内容` 两者相加组成的完整内容计算的 SHA-1 hash 值，而 Bit 仅仅根据文件内容计算 SHA-1 hash 值；另一个点是 Bit 的 header 中还额外包括文件内容的 SHA-1 hash 值。
 
 既然我们知道了数据是如何被处理和存储成这些文件，那么就可以反过来从这些文件中解析出这些数据，下面就是解析文件的方法：
 
-```js
+```javascript
 const zlib = require('zlib');
 const fs = require('fs-extra');
 
@@ -242,7 +242,7 @@ parseObject('/Users/xxx/bit/common/objects/03/3cb8b37245cf0cfbde2495d5d88c132423
 
 然后就可以调用 parseObject 方法去解析不同类型文件的内容，例如 Component 文件的示例内容如下：
 
-```js
+```javascript
 {
   name: 'button',
   scope: 'common',
@@ -264,7 +264,7 @@ parseObject('/Users/xxx/bit/common/objects/03/3cb8b37245cf0cfbde2495d5d88c132423
 
 Version 文件示例内容如下：
 
-```js
+```javascript
 {
   files: [
     {
@@ -299,7 +299,7 @@ Source 文件内容其实就是区块的源码，这里就不展示了。
 
 接下来的分析中又发现本地 scope 中（即 .bit 目录中）的 index.json 文件中记录了 Bit 组件的对应的 Component 文件的 SHA-1 hash 值。如下所示：
 
-```js
+```javascript
 ;[
   {
     id: {
